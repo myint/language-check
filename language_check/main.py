@@ -144,7 +144,7 @@ def main():
                         match.fromy + 1,
                         match.fromx + 1,
                         rule_id,
-                        message))
+                        message)).encode('utf-8')
                     status = 2
         except Error as exception:
             print('{}: {}'.format(filename, exception), file=sys.stderr)
