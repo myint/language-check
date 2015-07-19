@@ -10,6 +10,7 @@ import re
 import shutil
 import subprocess
 import sys
+import codecs
 from distutils.version import LooseVersion
 
 from setuptools import setup
@@ -127,7 +128,7 @@ assert platform
 
 def get_version():
     """Return version string."""
-    with open('language_check/__init__.py') as input_file:
+    with codecs.open('language_check/__init__.py', 'r', 'utf-8') as input_file:
         for line in input_file:
             if line.startswith('__version__'):
                 return ast.parse(line).body[0].value.s
