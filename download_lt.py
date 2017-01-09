@@ -30,9 +30,8 @@ JAVA_6_COMPATIBLE_VERSION = '2.2'
 JAVA_7_COMPATIBLE_VERSION = '3.1'
 LATEST_VERSION = '3.2'
 JAVA_VERSION_REGEX = re.compile(
-    r'^(?:java|openjdk) version "(?P<major1>\d+)\.(?P<major2>\d+)\.[^"]+"$',
+    r'^(?:java|openjdk) version "(?P<major1>\d+)\.?(?P<major2>\d)?.*',
     re.MULTILINE)
-
 
 def parse_java_version(version_text):
     """Return Java version (major1, major2).
@@ -51,13 +50,17 @@ def parse_java_version(version_text):
     (1, 8)
 
     """
-    match = re.search(JAVA_VERSION_REGEX, version_text)
+    match = re.match(JAVA_VERSION_REGEX, version_text)
     if not match:
         raise SystemExit(
             'Could not parse Java version from """{}""".'.format(version_text))
+    
+    try:
+        version = (int(match.group('major1')), int(match.group('major2')))
+    except IndexError:
+        version = (int(match.group('major1')), 0)
 
-    return (int(match.group('major1')), int(match.group('major2')))
-
+    return version 
 
 def get_newest_possible_languagetool_version():
     """Return newest compatible version.
