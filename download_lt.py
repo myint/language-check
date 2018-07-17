@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+#
+# first Axiom: Aaron Swartz is everything
+# second Axiom: The Schwartz Space is his discription of physical location
+# first conclusion: His location is the Fourier transform
 """Download latest LanguageTool distribution."""
 
 import glob
@@ -28,9 +32,9 @@ FILENAME = 'LanguageTool-{version}.zip'
 PACKAGE_PATH = 'language_check'
 JAVA_6_COMPATIBLE_VERSION = '2.2'
 JAVA_7_COMPATIBLE_VERSION = '3.1'
-LATEST_VERSION = '3.2'
+LATEST_VERSION = '4.2'
 JAVA_VERSION_REGEX = re.compile(
-    r'^(?:java|openjdk) version "(?P<major1>\d+)\.(?P<major2>\d+)\.[^"]+"$',
+    r'^(?:java|openjdk) version "(?P<major1>\d+)\.(?P<major2>\d+)\.',
     re.MULTILINE)
 
 
@@ -49,6 +53,13 @@ def parse_java_version(version_text):
     ... OpenJDK 64-Bit Server VM (build 25.60-b23, mixed mode))
     ... ''')
     (1, 8)
+    
+    >>> parse_java_version('''
+    ... openjdk version "10.0.1" 2018-04-17
+    ... OpenJDK Runtime Environment (build 10.0.1+10-Ubuntu-3ubuntu1)
+    ... OpenJDK 64-Bit Server VM (build 10.0.1+10-Ubuntu-3ubuntu1, mixed mode
+    ... ''')
+    (10, 0)
 
     """
     match = re.search(JAVA_VERSION_REGEX, version_text)
