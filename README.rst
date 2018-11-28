@@ -66,6 +66,10 @@ If you are using Python 2, you'll need to install 3to2 beforehand::
 
     $ pip install --upgrade 3to2
 
+To overwrite the host part of URL that is used to download LanguageTool-{version}.zip::
+
+    - SET LANGUAGE-CHECK-DOWNLOAD-URL = [alternate URL]
+
 
 Prerequisites
 -------------
