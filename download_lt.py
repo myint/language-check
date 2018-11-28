@@ -8,6 +8,7 @@ import re
 import shutil
 import subprocess
 import sys
+import os
 
 from contextlib import closing
 from distutils.spawn import find_executable
@@ -23,7 +24,7 @@ except ImportError:
     from urlparse import urljoin
 
 
-BASE_URL = 'https://www.languagetool.org/download/'
+BASE_URL = os.environ['LANGUAGE_CHECK_DOWNLOAD_HOST'] or 'https://www.languagetool.org/download/'
 FILENAME = 'LanguageTool-{version}.zip'
 PACKAGE_PATH = 'language_check'
 JAVA_6_COMPATIBLE_VERSION = '2.2'
