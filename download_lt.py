@@ -23,7 +23,9 @@ except ImportError:
     from urllib import urlopen
     from urlparse import urljoin
 
-ALT_BASE_URL = os.environ['LANGUAGE_CHECK_DOWNLOAD_HOST'] if os.environ.get('LANGUAGE_CHECK_DOWNLOAD_HOST') else None
+ALT_BASE_URL = os.environ['LANGUAGE_CHECK_DOWNLOAD_HOST'] \
+    if os.environ.get('LANGUAGE_CHECK_DOWNLOAD_HOST') \
+    else None
 BASE_URL = ALT_BASE_URL or 'https://www.languagetool.org/download/'
 FILENAME = 'LanguageTool-{version}.zip'
 PACKAGE_PATH = 'language_check'
