@@ -581,7 +581,8 @@ def language_tool_hook(config):
         del config['files']['package_data']
     elif any(arg.startswith(('install', 'build', 'bdist'))
              for arg in sys.argv):
-        download_lt()
+        if not os.environ.get('LANGUAGE_CHECK_SYSTEM_LANGUAGETOOL'):
+            download_lt()
 
 
 def main():

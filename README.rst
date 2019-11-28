@@ -70,6 +70,9 @@ To overwrite the host part of URL that is used to download LanguageTool-{version
 
     - SET LANGUAGE_CHECK_DOWNLOAD_HOST = [alternate URL]
 
+To use an existing installation of LanguageTool in the CLASSPATH rather than downloading it::
+
+    - SET LANGUAGE_CHECK_SYSTEM_LANGUAGETOOL = 1
 
 Prerequisites
 -------------
