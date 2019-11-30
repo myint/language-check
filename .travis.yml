@@ -9,6 +9,11 @@ python:
     - "3.6"
     - "nightly"
 
+before_install:
+    # LanguageTool 2.2 is incompatible with later java's.
+    - sudo apt-get -y install openjdk-8-jdk
+    - export PATH=/usr/lib/jvm/java-8-openjdk-amd64/jre/bin:$PATH
+
 install:
     - if [ "$TRAVIS_PYTHON_VERSION" == "2.7" ]; then pip install 3to2; fi
     - python setup.py install
