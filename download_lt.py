@@ -120,6 +120,7 @@ def download_lt(update=False):
     version = get_newest_possible_languagetool_version()
     filename = FILENAME.format(version=version)
     url = urljoin(BASE_URL, filename)
+    print(url)
     dirname = os.path.splitext(filename)[0]
     extract_path = os.path.join(PACKAGE_PATH, dirname)
 
